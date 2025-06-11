@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤪 Dev Typer Mayhem! 💻</title>
+    <style>
+        :root {
+            --typewriter-green: #00ff00;
+            --paper-color: #f4f1ea;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #2b2b2b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .game-container {
+            background-color: var(--paper-color);
+            border-radius: 15px;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+            position: relative;
+            margin-top: 20px;
+        }
+
+        .typewriter-header {
+            text-align: center;
+            color: #ff69b4;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            font-family: 'Press Start 2P', cursive;
+            color: #333;
+        }
+
+        .word-display {
+            font-size: 24px;
+            margin: 20px 0;
+            min-height: 100px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .current-word {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .typed-word {
+            color: #666;
+        }
+
+        .input-area {
+            width: 100%;
+            padding: 15px;
+            font-size: 18px;
+            border: 3px solid #333;
+            border-radius: 8px;
+            background: #fff;
+            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .input-area:focus {
+            outline: none;
+            border-color: var(--typewriter-green);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        }
+
+        .effects {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        @media (max-width: 600px) {
+            .game-container {
+                width: 95%;
+                padding: 15px;
+            }
+
+            .typewriter-header {
+                font-size: 1.5em;
+            }
+
+            .word-display {
+                font-size: 20px;
+            }
+        }
+
+        .keyboard-sound {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            animation: particleFade 1s ease-out forwards;
+        }
+
+        @keyframes particleFade {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1 class="typewriter-header">🤪 Dev Typer Mayhem! 💻</h1>
+        
+        <div class="stats">
+            <div>WPM: <span id="wpm">0</span></div>
+            <div>Score: <span id="score">0</span></div>
+            <div>Level: <span id="level">1</span></div>
+        </div>
+
+        <div class="word-display">
+            <span id="current-word" class="current-word"></span>
+        </div>
+
+        <input type="text" class="input-area" id="input" autocomplete="off" placeholder="Start typing here...">
+    </div>
+
+    <button class="keyboard-sound" id="toggle-sound">🔊 Sound: ON</button>
+
+    <script src="game.js"></script>
+</body>
+</html>
